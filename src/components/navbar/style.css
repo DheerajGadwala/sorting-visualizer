@@ -1,0 +1,113 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    min-height: 8vh;
+    background: #494849;
+}
+.logo{
+    color: rgb(226, 226, 226);
+    text-transform: uppercase ;
+    font-family:cursive;
+    letter-spacing: 5px;
+    font-size: 20px;
+}
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+.nav-links li{
+    list-style: none;
+    text-align: center;
+
+}
+.nav-links a{
+    color: rgb(226, 226, 226);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.burger{
+    display: none;
+}
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color: rgb(226, 226, 226);
+    margin: 5px;
+}
+.nav-links div{
+    width: 2px;
+    height: 15px;
+    background-color: rgb(226, 226, 226);
+    margin: 5px;
+}
+@media screen and (max-width:1250px) {
+    .nav-links{
+        display: flex;
+        justify-content: space-around;
+        width: 50%;
+    }
+}
+@media screen and (max-width:1000px) {
+    .nav-links{
+        display: flex;
+        justify-content: space-around;
+        width: 60%;
+    }
+}
+@media screen and (max-width:900px) {
+    .nav-links{
+        position:absolute;
+        right:0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: #494849;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 40%;
+        transform: translateX(100%); /*moves out of the screen*/
+        transition: transform 0.5s ease-in;
+    }
+    .nav-links div{
+        display: none;
+        width: 2px;
+        height: 15px;
+        background-color: rgb(226, 226, 226);
+        margin: 5px;
+    }
+    .nav-links li[navitems='0'] {
+        opacity: 0;
+    }
+    .burger{
+        display: block;
+        cursor: pointer;
+    }
+    body{
+        overflow-x:hidden;
+    }
+    .nav-links li[navitems='1']{
+        animation: navLinkFade 1.5s 1;
+    }
+}
+.nav-active{
+    transform: translateX(0%);
+}
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
