@@ -2,12 +2,13 @@ import React from 'react';
 import './style.css'
 
 const Area = (props)=>{
+
     return(
     <>
         <div className='container'>
-            <span>
-                {props.algo}
-            </span>
+            <p>{props.algo}</p>
+            <p>{props.sampleSize}</p>
+            <p>{props.sample}</p>
         </div>
     </>
     );

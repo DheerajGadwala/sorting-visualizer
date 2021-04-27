@@ -17,19 +17,45 @@ const Navbar = (props) => {
             animateNavItems(1);
         }
     }
+
+    const setSizeLocal = () =>{
+        props.setSampleSize(document.getElementById('samplesize').value);
+        randomize();
+    } 
+
+    const randomize = () =>{
+        const size = document.getElementById('samplesize').value;
+        const newSample = [];
+        var i;
+        for(i=0; i<size; i++){
+            newSample.push(Math.floor(Math.random() * 2000));
+        }
+        props.setSample(newSample);
+    }
+
     return (
         <>
             <nav>
                 <div className="logo">
                     <h4>Sorting Visualizer</h4>
                 </div>
+                <div className="slidercontainer">
+                    <div className="slider">
+                        <div>
+                            Sample Size
+                        </div>
+                        <div>
+                            <input type="range" min="1" max="100" id = "samplesize" onChange={setSizeLocal}/>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#" className="randomizeButton" onClick={randomize}>Randomize</a>
+                    </div>
+                </div>
                 <ul className="nav-links">
                     <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('bubble')}>Bubble Sort</a></li>
-                    <div className="bar1"></div>
                     <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('insertion')}>Insertion Sort</a></li> 
-                    <div className="bar2"></div>
                     <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('merge')}>Merge Sort</a></li> 
-                    <div className="bar3"></div>
                     <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('quick')}>Quick Sort</a></li>  
                 </ul>
                 <div className="burger" onClick={navSlide}>
