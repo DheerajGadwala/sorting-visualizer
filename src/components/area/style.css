@@ -1,5 +1,36 @@
-.container{
-    width: auto;
-    border: 1px solid rgb(7, 7, 7);
-    box-sizing: border-box;
+.areabody{
+    margin:0;
+    padding:0;
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: "Roboto", sans-serif;
+    background: rgb(255, 170, 170);
+}
+.bars{
+    background: rgb(185, 119, 119);
+    margin:0;
+    padding:0;
+    display: inline-block;
+    width: 800px;
+    height: 300px;
+    box-shadow: 0 0 10px 0 rgb(185, 119, 119);
+    border-radius: 5px;
+}
+.bars li{
+    display: table-cell;
+    width: 100px;
+    height: 300px;
+    position: relative;
+    align-items:center;
+    margin:auto;
+}
+.bars .bar{
+    display: block;
+    background: rgb(0, 0, 0);
+    box-shadow: 0 0 10px 0 rgb(0,0,0, 0.5);
+    position:absolute;
+    bottom: 0;
+    text-align:center;
 }

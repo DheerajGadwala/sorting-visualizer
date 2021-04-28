@@ -35,35 +35,37 @@ const Navbar = (props) => {
 
     return (
         <>
-            <nav>
-                <div className="logo">
-                    <h4>Sorting Visualizer</h4>
-                </div>
-                <div className="slidercontainer">
-                    <div className="slider">
-                        <div>
-                            Sample Size
+            <div className="navbody">
+                <nav>
+                    <div className="logo">
+                        <h4>Sorting Visualizer</h4>
+                    </div>
+                    <div className="slidercontainer">
+                        <div className="slider">
+                            <div>
+                                Sample Size
+                            </div>
+                            <div>
+                                <input type="range" min="10" max="200" id = "samplesize" onChange={setSizeLocal}/>
+                            </div>
                         </div>
                         <div>
-                            <input type="range" min="1" max="100" id = "samplesize" onChange={setSizeLocal}/>
+                            <a href="#" className="randomizeButton" onClick={randomize}>Randomize</a>
                         </div>
                     </div>
-                    <div>
-                        <a href="#" className="randomizeButton" onClick={randomize}>Randomize</a>
-                    </div>
-                </div>
-                <ul className="nav-links">
-                    <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('bubble')}>Bubble Sort</a></li>
-                    <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('insertion')}>Insertion Sort</a></li> 
-                    <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('merge')}>Merge Sort</a></li> 
-                    <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('quick')}>Quick Sort</a></li>  
-                </ul>
-                <div className="burger" onClick={navSlide}>
-                    <div className="line1"></div>
-                    <div className="line2"></div>
-                    <div className="line3"></div>
-                </div> 
-            </nav>
+                    <ul className="nav-links">
+                        <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('bubble')}>Bubble Sort</a></li>
+                        <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('insertion')}>Insertion Sort</a></li> 
+                        <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('merge')}>Merge Sort</a></li> 
+                        <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('quick')}>Quick Sort</a></li>  
+                    </ul>
+                    <div className="burger" onClick={navSlide}>
+                        <div className="line1"></div>
+                        <div className="line2"></div>
+                        <div className="line3"></div>
+                    </div> 
+                </nav>
+            </div>
         </>
     )
 }

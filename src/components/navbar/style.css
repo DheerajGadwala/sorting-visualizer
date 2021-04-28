@@ -1,4 +1,4 @@
-*{
+.navbody{
     margin:0px;
     padding:0px;
     box-sizing: border-box;
@@ -8,7 +8,7 @@ nav{
     justify-content: space-around;
     align-items: center; 
     min-height: 8vh;
-    background: #494849;
+    background: rgb(73, 72, 73);
 }
 .logo{
     color: rgb(226, 226, 226);
