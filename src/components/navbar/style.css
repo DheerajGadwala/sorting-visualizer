@@ -46,6 +46,9 @@ nav{
     font-weight: bold;
     font-size: 14px;
 }
+.selected{
+    color: rgb(0, 0, 0) !important;
+}
 .nav-links a:hover{
     color: rgb(0, 0, 0);
 }
@@ -73,7 +76,7 @@ a.randomizeButton{
     transition: all 0.2s;
 }
 a.randomizeButton:hover{
-    color:#000000;
+    color:rgb(73, 72, 73);
     background-color: rgb(255, 255, 255);
 }
 @media all and (max-width:30em){

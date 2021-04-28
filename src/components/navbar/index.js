@@ -28,7 +28,7 @@ const Navbar = (props) => {
         const newSample = [];
         var i;
         for(i=0; i<size; i++){
-            newSample.push(Math.floor(Math.random() * 2000));
+            newSample.push(Math.floor(Math.random() * 300));
         }
         props.setSample(newSample);
     }
@@ -46,18 +46,18 @@ const Navbar = (props) => {
                                 Sample Size
                             </div>
                             <div>
-                                <input type="range" min="10" max="200" id = "samplesize" onChange={setSizeLocal}/>
+                                <input type="range" min="20" max="300" id = "samplesize" onChange={setSizeLocal}/>
                             </div>
                         </div>
                         <div>
-                            <a href="#" className="randomizeButton" onClick={randomize}>Randomize</a>
+                            <a href="#" className="randomizeButton" onClick={randomize}>RANDOMIZE</a>
                         </div>
                     </div>
                     <ul className="nav-links">
-                        <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('bubble')}>Bubble Sort</a></li>
-                        <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('insertion')}>Insertion Sort</a></li> 
-                        <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('merge')}>Merge Sort</a></li> 
-                        <li navitems={navItems}><a href="#" onClick={()=>props.setAlgo('quick')}>Quick Sort</a></li>  
+                        <li navitems={navItems}><a href="#" className={`${props.algo==="bubble"?'selected':''}`} onClick={()=>props.setAlgo('bubble')}>Bubble Sort</a></li>
+                        <li navitems={navItems}><a href="#" className={`${props.algo==="insertion"?'selected':''}`} onClick={()=>props.setAlgo('insertion')}>Insertion Sort</a></li> 
+                        <li navitems={navItems}><a href="#" className={`${props.algo==="merge"?'selected':''}`} onClick={()=>props.setAlgo('merge')}>Merge Sort</a></li> 
+                        <li navitems={navItems}><a href="#" className={`${props.algo==="quick"?'selected':''}`} onClick={()=>props.setAlgo('quick')}>Quick Sort</a></li>  
                     </ul>
                     <div className="burger" onClick={navSlide}>
                         <div className="line1"></div>

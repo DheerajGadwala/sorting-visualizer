@@ -1,16 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Navbar from './components/navbar';
 import Area from './components/area';
 
 function App() {
     const [algo, setAlgo] = React.useState('bubble');
     const [sampleSize, setSampleSize] = React.useState(20);
-    const [sample, setSample] = React.useState([0, 1, 2, 3, 4, 5]);
+    const [sample, setSample] = React.useState([20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]);
 
     return (
     <>
         <div>
             <Navbar
+            algo={algo}
             setAlgo={setAlgo}
             setSampleSize={setSampleSize}
             setSample={setSample}
@@ -21,6 +22,7 @@ function App() {
             algo={algo}
             sampleSize={sampleSize}
             sample={sample}
+            setSample={setSample}
             />
         </div>
     </>

@@ -11,7 +11,7 @@
 .bars{
     background: rgb(185, 119, 119);
     margin:0;
-    padding:0;
+    padding:2px;
     display: inline-block;
     width: 800px;
     height: 300px;
@@ -33,4 +33,31 @@
     position:absolute;
     bottom: 0;
     text-align:center;
+}
+.startButtonDiv{
+    text-align:center;
+}
+a.startButton{
+    display:inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid rgb(226, 226, 226);
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: rgb(226, 226, 226);
+    text-align: center;
+    transition: all 0.2s;
+}
+a.startButton:hover{
+    color:rgb(255, 170, 170);
+    background-color: rgb(255, 255, 255);
+}
+@media all and (max-width:30em){
+    a.startButton{
+        display: block;
+        margin: 0.4em auto;
+    }
 }
