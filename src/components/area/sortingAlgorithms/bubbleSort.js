@@ -1,4 +1,30 @@
 export const bubbleSort = (props)=>{
+
+
+    // currently selected numbers colour to orange
+    const innerTimeout = (i, j, delay, set)=>{
+        setTimeout(() => {
+            document.querySelectorAll('.selectedBar').forEach(element=>{
+                element.classList.remove('selectedBar');
+            });
+            document.getElementById((j-1)).classList.add('selectedBar');
+            document.getElementById((j)).classList.add('selectedBar');
+            if(set[j-1]>set[j]){
+                var temp = set[j];
+                set[j] = set[j-1];
+                set[j-1] = temp;
+                props.setSample([...set]);
+            }
+        }, delay+delayChange);
+    }
+
+    // sorted numbers colour changed to grey
+    const outerTimeout = (i, delay)=>{
+        setTimeout(()=>{
+            document.getElementById((i-1)).classList.add('sortedBar');
+        }, delay);
+    }
+
     var set = [...props.sample]
     var i;
     var j;
@@ -7,26 +33,10 @@ export const bubbleSort = (props)=>{
     props.setSorting(true);
     for(i=props.sampleSize; i>0; i--){
         for(j=1; j<i; j++){
-            (function(i, j, delay, set){
-            setTimeout(() => {
-                document.querySelectorAll('.selectedBar').forEach(element=>{
-                    element.classList.remove('selectedBar');
-                });
-                document.getElementById((j-1)).classList.add('selectedBar');
-                document.getElementById((j)).classList.add('selectedBar');
-                if(set[j-1]>set[j]){
-                    var temp = set[j];
-                    set[j] = set[j-1];
-                    set[j-1] = temp;
-                    props.setSample([...set]);
-                }
-            }, delay+delayChange);})(i, j, delay, set);
-        delay+=delayChange;
+            innerTimeout(i, j, delay, set);
+            delay+=delayChange;
         }
-        (function(i, delay){
-            setTimeout(()=>{
-                document.getElementById((i-1)).classList.add('sortedBar');
-            }, delay);})(i, delay);
+        outerTimeout(i, delay);
     }
     (function(delay){
         setTimeout(()=>{

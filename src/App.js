@@ -5,7 +5,7 @@ import Area from './components/area';
 function App() {
     const [algo, setAlgo] = React.useState('bubble');
     const [sampleSize, setSampleSize] = React.useState(20);
-    const [sample, setSample] = React.useState([20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]);
+    const [sample, setSample] = React.useState([187, 159, 126, 10, 240, 51, 99, 12, 30, 99, 96, 129, 34, 166, 35, 246, 101, 123, 64, 98]);
     const [sorting, setSorting] = React.useState(false);
     const [sorted, setSorted] = React.useState(false);
 
