@@ -1,5 +1,7 @@
 export const insertionSort = (props)=>{
 
+    var delay=1000/props.sampleSize;
+
     const helper = (set, i, j, delay, pos, newElement, type)=>{
         if(type==="push"){
             return new Promise(resolve=>{
@@ -23,7 +25,6 @@ export const insertionSort = (props)=>{
     async function main(){
         var set = [...props.sample]
         var i, j;
-        var delay=1000/props.sampleSize;
         document.getElementById((0)).classList.add('sortedBar');
         for(i=1; i<props.sampleSize; i++){
             var newElement=set[i];

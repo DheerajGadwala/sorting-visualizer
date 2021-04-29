@@ -1,5 +1,7 @@
 export const bubbleSort = (props)=>{
 
+    var delay=1000/props.sampleSize;
+
     const helper = (delay, j, type)=>{
         if(type==="visualize"){
             return new Promise (resolve=>{
@@ -18,7 +20,6 @@ export const bubbleSort = (props)=>{
     async function main(){
         var set = [...props.sample]
         var i, j;
-        var delay=1000/props.sampleSize;
         for(i=props.sampleSize; i>0; i--){
             var ind=true;
             for(j=1; j<i; j++){

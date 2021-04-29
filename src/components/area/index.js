@@ -1,7 +1,8 @@
 import React from 'react';
 import './style.css';
 import {bubbleSort} from './sortingAlgorithms/bubbleSort.js';
-import {insertionSort} from './sortingAlgorithms/insertionSort.js'
+import {insertionSort} from './sortingAlgorithms/insertionSort.js';
+import {mergeSort} from './sortingAlgorithms/mergeSort.js';
 
 const Area = (props)=>{
 
@@ -33,7 +34,7 @@ const Area = (props)=>{
             insertionSort(props);
         }
         else if(props.algo === "merge"){
-            console.log('merge');
+            mergeSort(props);
         }
         else if(props.algo === "quick"){
             console.log('quick');
