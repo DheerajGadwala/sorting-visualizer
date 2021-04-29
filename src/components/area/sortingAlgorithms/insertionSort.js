@@ -2,17 +2,21 @@ export const insertionSort = (props)=>{
 
     const helper = (set, i, j, delay, pos, newElement, type)=>{
         if(type==="push"){
-            return new Promise(resolve=>{setTimeout(()=>{
-                set[j] = set[j-1];
-                props.setSample([...set]);
-                resolve();
-            }, delay);});
+            return new Promise(resolve=>{
+                setTimeout(()=>{
+                    set[j] = set[j-1];
+                    props.setSample([...set]);
+                    resolve();
+                }, delay);
+            });
         }else if(type==="insert"){
-            return new Promise(resolve=>{setTimeout(()=>{
-                set[pos] = newElement;
-                props.setSample([...set]);
-                resolve();
-            }, delay);});
+            return new Promise(resolve=>{
+                setTimeout(()=>{
+                    set[pos] = newElement;
+                    props.setSample([...set]);
+                    resolve();
+                }, delay);
+            });
         }
     }
     
@@ -20,7 +24,6 @@ export const insertionSort = (props)=>{
         var set = [...props.sample]
         var i, j;
         var delay=1000/props.sampleSize;
-        props.setSorting(true);
         document.getElementById((0)).classList.add('sortedBar');
         for(i=1; i<props.sampleSize; i++){
             var newElement=set[i];
@@ -47,8 +50,9 @@ export const insertionSort = (props)=>{
             });
         }
     }
-props.setSorting(true);
-main();
-props.setSorting(false);
-props.setSorted(true);
+
+    props.setSorting(true);
+    main();
+    props.setSorting(false);
+    props.setSorted(true);
 }
