@@ -6,6 +6,8 @@ function App() {
     const [algo, setAlgo] = React.useState('bubble');
     const [sampleSize, setSampleSize] = React.useState(20);
     const [sample, setSample] = React.useState([20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]);
+    const [sorting, setSorting] = React.useState(false);
+    const [sorted, setSorted] = React.useState(false);
 
     return (
     <>
@@ -15,6 +17,7 @@ function App() {
             setAlgo={setAlgo}
             setSampleSize={setSampleSize}
             setSample={setSample}
+            setSorted={setSorted}
             />
         </div>
         <div>
@@ -23,6 +26,8 @@ function App() {
             sampleSize={sampleSize}
             sample={sample}
             setSample={setSample}
+            setSorting={setSorting}
+            setSorted={setSorted}
             />
         </div>
     </>

@@ -1,5 +1,6 @@
 import React from 'react';
-import './style.css'
+import './style.css';
+import {bubbleSort} from './sortingAlgorithms/bubbleSort.js';
 
 const Area = (props)=>{
 
@@ -8,7 +9,8 @@ const Area = (props)=>{
         var i;
         for(i=0; i<props.sampleSize; i++){
             ret.push(<li key={i}>
-                <div    className="bar" 
+                <div    className="bar"
+                        id={i} 
                         length-value={props.sample[i]} 
                         style=
                         {{  height: props.sample[i], 
@@ -22,42 +24,26 @@ const Area = (props)=>{
         return ret;
     }
 
-    const sleep = (ms) =>{
-        return new Promise(resolve=>setTimeout(resolve, ms));
-    }
-
-    const bubbleSort = ()=>{
-        console.log(props.sample);
-        var set = [...props.sample]
-        var i;
-        var j;
-        var initialDelay = 0;
-        for(i=props.sampleSize; i>0; i--){
-            for(j=1; j<i; j++){
-                (function(i, j, initialDelay, set){
-                setTimeout(() => {  
-                    console.log(initialDelay, i, j, set); 
-                    if(set[j-1]>set[j]){
-                        var temp = set[j];
-                        set[j] = set[j-1];
-                        set[j-1] = temp;
-                        props.setSample([...set]);
-                    }
-                }, initialDelay+1);})(i, j, initialDelay, set);
-            initialDelay+=1;
-            }
+    const sort = ()=>{
+        if(props.algo === "bubble"){
+            bubbleSort(props);
         }
-        setTimeout(() => {   
-            console.log(props.sample);
-        }, initialDelay+50);
-        
+        else if(props.algo === "insertion"){
+            console.log('insertion');
+        }
+        else if(props.algo === "merge"){
+            console.log('merge');
+        }
+        else if(props.algo === "quick"){
+            console.log('quick');
+        }
     }
 
     return(
     <div className="areabody">
         <div className="area">
             <div className="startButtonDiv">
-                <a href="#" className="startButton" onClick={bubbleSort}>START</a>
+                <a href="#" className="startButton" onClick={sort}>START</a>
             </div>
             <ul className="bars">
                 {generateArea()}

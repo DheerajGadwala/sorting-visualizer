@@ -24,6 +24,10 @@ const Navbar = (props) => {
     } 
 
     const randomize = () =>{
+        props.setSorted(false);
+        document.querySelectorAll('.bar').forEach(element=>{
+            element.classList.remove('sortedBar');
+        });
         const size = document.getElementById('samplesize').value;
         const newSample = [];
         var i;
