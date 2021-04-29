@@ -7,7 +7,7 @@ const Area = (props)=>{
         const ret = [];
         var i;
         for(i=0; i<props.sampleSize; i++){
-            ret.push(<li>
+            ret.push(<li key={i}>
                 <div    className="bar" 
                         length-value={props.sample[i]} 
                         style=
@@ -43,8 +43,8 @@ const Area = (props)=>{
                         set[j-1] = temp;
                         props.setSample([...set]);
                     }
-                }, initialDelay+50);})(i, j, initialDelay, set);
-            initialDelay+=50;
+                }, initialDelay+1);})(i, j, initialDelay, set);
+            initialDelay+=1;
             }
         }
         setTimeout(() => {   
