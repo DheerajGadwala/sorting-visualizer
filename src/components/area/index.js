@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './style.css';
 import {bubbleSort} from './sortingAlgorithms/bubbleSort.js';
 import {insertionSort} from './sortingAlgorithms/insertionSort.js';
@@ -7,6 +7,13 @@ import {quickSort} from './sortingAlgorithms/quickSort.js';
 
 const Area = (props)=>{
 
+    const [barsWidth, setBarsWidth] = React.useState(0);
+    const [barsHeight, setBarsHeight] = React.useState(0);
+
+    useEffect(()=>{
+        setBarsWidth(document.querySelector('.bars').offsetWidth-4);
+        setBarsHeight(document.querySelector('.bars').offsetHeight-4);
+    });
     const generateArea = ()=>{
         const ret = [];
         var i;
@@ -16,10 +23,10 @@ const Area = (props)=>{
                         id={i} 
                         length-value={props.sample[i]} 
                         style=
-                        {{  height: props.sample[i], 
-                            width: 400/props.sampleSize,
-                            marginLeft: 200/props.sampleSize, 
-                            marginRight: 200/props.sampleSize
+                        {{  height: (props.sample[i]/barsHeight*50)+'vh', // 50 is the height in bars class in viewports
+                            width: 70/(2*props.sampleSize)+'vw',          // 70 is the width in bars class in viewports
+                            marginLeft: 70/(4*props.sampleSize)+'vw', 
+                            marginRight: 70/(4*props.sampleSize)+'vw'
                         }}>
                 </div>
             </li>);
@@ -46,7 +53,7 @@ const Area = (props)=>{
     <div className="areabody">
         <div className="area">
             <div className="startButtonDiv">
-                <a href="#" className="startButton" onClick={sort}>START</a>
+                <a className="startButton" onClick={sort}>START</a>
             </div>
             <ul className="bars">
                 {generateArea()}

@@ -2,9 +2,9 @@
     margin:0;
     padding:0;
     height: 100vh;
+    width: 100vw;
     display:flex;
     justify-content:center;
-    align-items:center;
     font-family: "Roboto", sans-serif;
     background: rgb(255, 170, 170);
 }
@@ -13,15 +13,15 @@
     margin:0;
     padding:2px;
     display: inline-block;
-    width: 800px;
-    height: 300px;
+    width: 70vw;
+    height: 50vh;
     box-shadow: 0 0 10px 0 rgb(185, 119, 119);
     border-radius: 5px;
 }
 .bars li{
     display: table-cell;
     width: 100px;
-    height: 300px;
+    height: 50vh;
     position: relative;
     align-items:center;
     margin:auto;
@@ -61,7 +61,7 @@ a.startButton{
     display:inline-block;
     padding: 0.35em 1.2em;
     border: 0.1em solid rgb(226, 226, 226);
-    margin: 0 0.3em 0.3em 0;
+    margin: 20px 0 20px 0;
     border-radius: 0.12em;
     box-sizing: border-box;
     text-decoration: none;
@@ -74,10 +74,4 @@ a.startButton{
 a.startButton:hover{
     color:rgb(255, 170, 170);
     background-color: rgb(255, 255, 255);
-}
-@media all and (max-width:30em){
-    a.startButton{
-        display: block;
-        margin: 0.4em auto;
-    }
 }

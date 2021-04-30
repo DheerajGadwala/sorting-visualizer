@@ -6,9 +6,9 @@
 .navbar{
     display: inline-flex;
     width: 100vw;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center; 
-    min-height: 8vh;
+    min-height: 16vh;
     background: rgb(73, 72, 73);
 }
 .block1{
@@ -33,13 +33,13 @@
     letter-spacing: 2px;
     font-size: 16px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 .dropdownContainer{
     align-items: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 .slider{
     display:block;
@@ -64,6 +64,7 @@ a.randomizeButton{
     color: rgb(226, 226, 226);
     text-align: center;
     transition: all 0.2s;
+    cursor: pointer;
 }
 a.randomizeButton:hover{
     color:rgb(73, 72, 73);
@@ -82,7 +83,7 @@ a.randomizeButton:hover{
     .block2{
         width: 60vw;
         display: inline-flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
 }
 @media screen and (max-width:900px) {
@@ -95,7 +96,8 @@ a.randomizeButton:hover{
     .block2{
         width: 100vw;
         display: inline-flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
+        margin:2% 0% 2% 0%;
     }
 }
 @media screen and (max-width:600px) {
@@ -106,19 +108,19 @@ a.randomizeButton:hover{
         width: 100vw;
     }
     .block2{
-        display: inline-block;
+        display: inline;
     }
     .block2a{
         width: 100vw;
         display: inline-flex;
-        justify-content: space-around;
-        margin:2%;
+        justify-content:space-evenly;
+        margin:2% 0% 2% 0%;
     }
     .block2b{
         width: 100vw;
         display: inline-flex;
         justify-content: space-around;
-        margin:2%;
+        margin:2% 0% 2% 0%;
     }
 }
 #samplesize{
@@ -136,7 +138,7 @@ select {
     border-radius: 0;
     background-color: rgb(73, 72, 73);
     border: none;
-    border-bottom: 2px solid rgb(73, 72, 73);
+    border-bottom: 1px solid rgb(73, 72, 73);
     color: rgb(226, 226, 226);
     padding: 10px;
     padding-right: 38px;

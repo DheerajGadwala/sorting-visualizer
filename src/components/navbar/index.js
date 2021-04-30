@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './style.css'
 
 const Navbar = (props) => {
+    const [barsHeight, setBarsHeight] = React.useState(0);
+
+    useEffect(()=>{
+        setBarsHeight(document.querySelector('.bars').offsetHeight-4);
+    });
 
     const setSizeLocal = () =>{
         props.setSampleSize(document.getElementById('samplesize').value);
@@ -17,7 +22,7 @@ const Navbar = (props) => {
         const newSample = [];
         var i;
         for(i=0; i<size; i++){
-            newSample.push(Math.floor(Math.random() * 300));
+            newSample.push(Math.floor(Math.random() * barsHeight));
         }
         props.setSample(newSample);
     }
@@ -40,11 +45,11 @@ const Navbar = (props) => {
                                 </div>
                             </div>
                             <div>
-                                <a href="#" className="randomizeButton" onClick={randomize}>RANDOMIZE</a>
+                                <a className="randomizeButton" onClick={randomize}>RANDOMIZE</a>
                             </div>
                         </div>
                         <div className="dropdownContainer block2b">
-                            <select name="Algorithm" id="algo" onChange={()=>{props.setAlgo(document.getElementById('algo').value); document.getElementById('algo').blur();}}>
+                            <select id="algo" onChange={()=>{props.setAlgo(document.getElementById('algo').value); document.getElementById('algo').blur();}}>
                                 <option value="bubble">Bubble Sort</option>
                                 <option value="insertion">Insertion Sort</option>
                                 <option value="merge">Merge Sort</option>
