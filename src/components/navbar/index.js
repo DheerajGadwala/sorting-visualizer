@@ -3,21 +3,6 @@ import './style.css'
 
 const Navbar = (props) => {
 
-    const [navItems, animateNavItems] = React.useState(0);
-
-    const navSlide = () =>{
-        const nav = document.querySelector('.nav-links');
-        
-        //Toggling Nav bar
-        nav.classList.toggle('nav-active');
-        //Animate links
-        if(navItems===1){
-            animateNavItems(0);
-        }else{
-            animateNavItems(1);
-        }
-    }
-
     const setSizeLocal = () =>{
         props.setSampleSize(document.getElementById('samplesize').value);
         randomize();
@@ -40,34 +25,33 @@ const Navbar = (props) => {
     return (
         <>
             <div className="navbody">
-                <nav>
-                    <div className="logo">
+                <nav className="navbar">
+                    <div className="logo block1">
                         <h4>Sorting Visualizer</h4>
                     </div>
-                    <div className="slidercontainer">
-                        <div className="slider">
-                            <div>
-                                Sample Size
+                    <div className="block2">
+                        <div className="slidercontainer block2a">
+                            <div className="slider">
+                                <div>
+                                    Sample Size
+                                </div>
+                                <div>
+                                    <input type="range" min="20" max="300" id = "samplesize" onChange={setSizeLocal}/>
+                                </div>
                             </div>
                             <div>
-                                <input type="range" min="20" max="300" id = "samplesize" onChange={setSizeLocal}/>
+                                <a href="#" className="randomizeButton" onClick={randomize}>RANDOMIZE</a>
                             </div>
                         </div>
-                        <div>
-                            <a href="#" className="randomizeButton" onClick={randomize}>RANDOMIZE</a>
+                        <div className="dropdownContainer block2b">
+                            <select name="Algorithm" id="algo" onChange={()=>{props.setAlgo(document.getElementById('algo').value); document.getElementById('algo').blur();}}>
+                                <option value="bubble">Bubble Sort</option>
+                                <option value="insertion">Insertion Sort</option>
+                                <option value="merge">Merge Sort</option>
+                                <option value="quick">Quick Sort</option>
+                            </select>
                         </div>
                     </div>
-                    <ul className="nav-links">
-                        <li navitems={navItems}><a href="#" className={`${props.algo==="bubble"?'selected':''}`} onClick={()=>props.setAlgo('bubble')}>Bubble Sort</a></li>
-                        <li navitems={navItems}><a href="#" className={`${props.algo==="insertion"?'selected':''}`} onClick={()=>props.setAlgo('insertion')}>Insertion Sort</a></li> 
-                        <li navitems={navItems}><a href="#" className={`${props.algo==="merge"?'selected':''}`} onClick={()=>props.setAlgo('merge')}>Merge Sort</a></li> 
-                        <li navitems={navItems}><a href="#" className={`${props.algo==="quick"?'selected':''}`} onClick={()=>props.setAlgo('quick')}>Quick Sort</a></li>  
-                    </ul>
-                    <div className="burger" onClick={navSlide}>
-                        <div className="line1"></div>
-                        <div className="line2"></div>
-                        <div className="line3"></div>
-                    </div> 
                 </nav>
             </div>
         </>
