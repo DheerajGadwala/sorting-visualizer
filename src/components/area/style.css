@@ -46,6 +46,10 @@
     background: rgb(51, 153, 248) !important;
     box-shadow: 0 0 10px 0 rgb(51, 153, 248, 0.5) !important;
 }
+.sortingHereBar{
+    background: rgb(229, 190, 190) !important;
+    box-shadow: 0 0 10px 0 rgb(229, 190, 190, 0.5) !important;
+}
 .startButtonDiv{
     text-align:center;
 }
