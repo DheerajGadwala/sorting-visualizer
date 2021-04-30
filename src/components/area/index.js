@@ -3,6 +3,7 @@ import './style.css';
 import {bubbleSort} from './sortingAlgorithms/bubbleSort.js';
 import {insertionSort} from './sortingAlgorithms/insertionSort.js';
 import {mergeSort} from './sortingAlgorithms/mergeSort.js';
+import {quickSort} from './sortingAlgorithms/quickSort.js';
 
 const Area = (props)=>{
 
@@ -37,7 +38,7 @@ const Area = (props)=>{
             mergeSort(props);
         }
         else if(props.algo === "quick"){
-            console.log('quick');
+            quickSort(props);
         }
     }
 

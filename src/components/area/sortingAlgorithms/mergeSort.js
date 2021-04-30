@@ -1,8 +1,9 @@
 export const mergeSort = (props)=>{
 
-    var delay=1000/props.sampleSize;
-    var start=Date.now();
+    var delay=200/props.sampleSize;
+    var cnt=0;
     const helper = (delay, type)=>{
+        cnt+=1;
         if(type==="visualize"){
             return new Promise (resolve=>{
                 setTimeout(()=>{
@@ -72,18 +73,16 @@ export const mergeSort = (props)=>{
             await helper(delay, "visualize");
             document.getElementById((m+1)).classList.remove('sortingHereBar');
             document.getElementById((r)).classList.remove('sortingHereBar');
-            console.log('add: ', l, m, Math.floor((Date.now()-start) / 1000));
             document.getElementById((l)).classList.add('blueBar');
             document.getElementById((r)).classList.add('blueBar');
             await merge(set, l, m, r);
             document.getElementById((l)).classList.remove('blueBar');
             document.getElementById((r)).classList.remove('blueBar');
-            console.log('remove: ', l, m, Math.floor((Date.now()-start) / 1000));
         }
     }
 
     async function main(){
-        var set = [...props.sample]
+        var set = [...props.sample];
         await divide(set, 0, props.sampleSize-1);
         props.setSample(set);
         document.querySelectorAll('.bar').forEach(element=>{
