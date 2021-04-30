@@ -2,76 +2,59 @@ export const mergeSort = (props)=>{
 
     var delay=1000/props.sampleSize;
 
-    const helper = (delay, index, type)=>{
-        if(type==="add"){
-            return new Promise(resolve=>{
+    const helper = (delay, type)=>{
+        if(type==="visualize"){
+            return new Promise (resolve=>{
                 setTimeout(()=>{
-                    document.getElementById(index).classList.add('sortedBar');
+
+                    resolve();
                 }, delay);
             });
         }
     }
 
-    const merge = (left, right, leftIndices, rightIndices)=>{
-        var comb = [];
-        var indices = [];
-        var length = left.length+right.length;
-        var i, j;
-        j = Math.min(leftIndices);
-        console.log('merge-values', left, right);
-        console.log('merge-indices', leftIndices, rightIndices);
-        for(i=0; i<length; i++){
-            console.log('before-values: ', comb);
-            console.log('before-indices: ', indices);
-            if(left.length!=0 && right.length!=0){
-                if(left[0]<right[0]){
-                    comb.push(left.splice(0, 1)[0]);
-                    indices.push(leftIndices.splice(0, 1)[0]);
-                }
-                else{
-                    comb.push(right.splice(0, 1)[0]);
-                    indices.push(rightIndices.splice(0, 1)[0]);
-                }
-            }
-            else if(left.length===0){
-                comb.push(right.splice(0, 1)[0]);
-                indices.push(rightIndices.splice(0, 1)[0]);
-            }
-            else if(right.length===0){
-                comb.push(left.splice(0, 1)[0]);
-                indices.push(leftIndices.splice(0, 1)[0]);
-            }
-            //await helper(delay, j, )
-            console.log('after-values: ', comb);
-            console.log('after-indices: ', indices);
+    async function merge(set, l, m, r){
+        console.log('merge: ', set, l, m, r);
+        var l2 = m+1;
+        if(set[m]<=set[l2]){
+            return null;
         }
-        return [comb, indices];
+        while(l<=m && l2<=r){
+            if(set[l]<=set[l2]){
+                l+=1;
+            }
+            else{
+                var val = set[l2];
+                var pos = l2;
+                while(pos!=l){
+                    set[pos] = set[pos-1];
+                    pos-=1
+                    props.setSample([...set]);
+                    await helper(delay, "visualize");
+                }
+                set[l] = val;
+                l+=1;
+                m+=1;
+                l2+=1;
+            }
+        }
+            
     }
 
-    const divide = (set, indices)=>{
-        if(set.length===1){
-            return [set, indices];
+    async function divide(set, l, r){
+        console.log('divide: ', set, l, r);
+        if(l<r){
+            var m = l + Math.floor((r-l)/2)
+            await divide(set, l, m);
+            await divide(set, m+1, r);
+            await merge(set, l, m, r);
         }
-        var x = Math.floor(set.length/2);
-        var leftRet = divide(set.slice(0, x), indices.slice(0, x));
-        var rightRet = divide(set.slice(x, set.length), indices.slice(x, set.length));
-        var combRet = merge([...leftRet[0]], [...rightRet[0]], [...leftRet[1]], [...rightRet[1]]);
-        console.log('divide-values: ', leftRet[0], rightRet[0], combRet[0]);
-        console.log('divide-indices: ', leftRet[1], rightRet[1], combRet[1]);
-        return combRet;
     }
 
     async function main(){
-        var indices = [];
-        for(var i=0; i<props.sampleSize; i++){
-            indices.push(i);
-        }
         var set = [...props.sample]
-        var i, j;
-        console.log(set, indices);
-        var ret = divide(set, indices);
-        console.log(ret[0], ret[1]);
-        props.setSample(ret[0]);
+        await divide(set, 0, props.sampleSize-1);
+        props.setSample(set);
     }
     props.setSorting(true);
     main();
