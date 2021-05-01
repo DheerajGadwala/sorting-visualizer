@@ -12,19 +12,21 @@ const Navbar = (props) => {
     });
 
     const randomize = () =>{
-        props.setSorted(false);
-        props.setBarsGeneratedHeight(props.barsHeight);
-        document.querySelectorAll('.bar').forEach(element=>{
-            element.classList.remove('sortedBar');
-        });
-        props.setSampleSize(document.getElementById('samplesize').value);
-        const size = document.getElementById('samplesize').value;
-        const newSample = [];
-        var i;
-        for(i=0; i<size; i++){
-            newSample.push(Math.floor(Math.random() * props.barsHeight));
+        if(!props.sorting){
+            props.setSorted(false);
+            props.setBarsGeneratedHeight(props.barsHeight);
+            document.querySelectorAll('.bar').forEach(element=>{
+                element.classList.remove('sortedBar');
+            });
+            props.setSampleSize(document.getElementById('samplesize').value);
+            const size = document.getElementById('samplesize').value;
+            const newSample = [];
+            var i;
+            for(i=0; i<size; i++){
+                newSample.push(Math.floor(Math.random() * props.barsHeight));
+            }
+            props.setSample([...newSample]);
         }
-        props.setSample([...newSample]);
     }
 
     window.addEventListener('load', randomize); //randomize sampleSet on load
@@ -43,15 +45,15 @@ const Navbar = (props) => {
                                     Sample Size
                                 </div>
                                 <div>
-                                    <input type="range" min="20" max="200" defaultValue="20" id = "samplesize" onChange={randomize}/>
+                                    <input className={`${props.sorting?'disabledSlider':''}`} disabled={`${props.sorting?'disabled':''}`} type="range" min="20" max="200" defaultValue="20" id = "samplesize" onChange={randomize}/>
                                 </div>
                             </div>
                             <div>
-                                <a className="randomizeButton" onClick={randomize}>RANDOMIZE</a>
+                                <a className={`${props.sorting?'disabledRandomizeButton':'randomizeButton'}`} onClick={randomize}>RANDOMIZE</a>
                             </div>
                         </div>
                         <div className="dropdownContainer block2b">
-                            <select id="algo" onChange={()=>{props.setAlgo(document.getElementById('algo').value); document.getElementById('algo').blur();}}>
+                            <select id="algo" disabled={`${props.sorting?'disabled':''}`} className={`${props.sorting?'disabledSlider':''}`} onChange={()=>{props.setAlgo(document.getElementById('algo').value); document.getElementById('algo').blur();}}>
                                 <option value="bubble">Bubble Sort</option>
                                 <option value="insertion">Insertion Sort</option>
                                 <option value="selection">Selection Sort</option>

@@ -18,6 +18,7 @@ export const bubbleSort = (props)=>{
     }
 
     async function main(){
+        props.setSorting(true);
         var set = [...props.sample]
         var i, j;
         for(i=props.sampleSize; i>0; i--){
@@ -43,10 +44,10 @@ export const bubbleSort = (props)=>{
         document.querySelectorAll('.selectedBar').forEach(element=>{
             element.classList.remove('selectedBar');
         });
+        props.setSorting(false);
+        props.setSorted(true);
     }
-
-    props.setSorting(true);
+    
     main();
-    props.setSorting(false);
-    props.setSorted(true);
+    
 }

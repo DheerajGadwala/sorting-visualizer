@@ -23,6 +23,7 @@ export const insertionSort = (props)=>{
     }
     
     async function main(){
+        props.setSorting(true);
         var set = [...props.sample]
         var i, j;
         document.getElementById((0)).classList.add('sortedBar');
@@ -50,10 +51,10 @@ export const insertionSort = (props)=>{
                 }
             });
         }
+        props.setSorting(false);
+        props.setSorted(true);
     }
 
-    props.setSorting(true);
     main();
-    props.setSorting(false);
-    props.setSorted(true);
+
 }

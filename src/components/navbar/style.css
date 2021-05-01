@@ -160,18 +160,18 @@ select {
     background-repeat: no-repeat;
         /* Adding transition effect */
         transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
-  }
+}
   /* For IE <= 11 */
-  select::-ms-expand {
+select::-ms-expand {
     display: none; 
-  }
-  select:hover,
-  select:focus {
+}
+select:hover,
+select:focus {
     color: rgb(73, 72, 73);
     background-color: rgb(226, 226, 226);
     border-bottom-color: rgb(226, 226, 226);
-  }
-  select:focus{
+}
+select:focus{
     background-image:
     linear-gradient(45deg, white 50%, transparent 50%),
     linear-gradient(135deg, transparent 50%, white 50%),
@@ -187,4 +187,22 @@ select {
     background-repeat: no-repeat;
     border-color: grey;
     outline: 0;
-  }
+}
+.disabledRandomizeButton{
+    cursor:not-allowed;
+    display:inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid rgb(180, 179, 179);
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: rgb(180, 179, 179);
+    text-align: center;
+    transition: all 0.2s;
+}
+.disabledSlider{
+    cursor:not-allowed !important;
+}

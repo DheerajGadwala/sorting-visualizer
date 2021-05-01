@@ -67,6 +67,7 @@ export const quickSort = (props)=>{
     }
 
     async function main(){
+        props.setSorting(true);
         var set = [...props.sample];
         await sort(set, 0, props.sampleSize-1);
         props.setSample([...set]);
@@ -79,9 +80,10 @@ export const quickSort = (props)=>{
         document.querySelectorAll('.workingBar2').forEach(element=>{
             document.getElementById(element.id).classList.remove('workingBar2');
         });
+        props.setSorting(false);
+        props.setSorted(true);
     }
-    props.setSorting(true);
+
     main();
-    props.setSorting(false);
-    props.setSorted(true);
+
 }

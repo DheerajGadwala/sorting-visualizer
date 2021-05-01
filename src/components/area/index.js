@@ -38,23 +38,25 @@ const Area = (props)=>{
     }
 
     const sort = ()=>{
-        if(props.algo === "bubble"){
-            bubbleSort(props);
-        }
-        else if(props.algo === "insertion"){
-            insertionSort(props);
-        }
-        else if(props.algo === "merge"){
-            mergeSort(props);
-        }
-        else if(props.algo === "quick"){
-            quickSort(props);
-        }
-        else if(props.algo === "selection"){
-            selectionSort(props);
-        }
-        else if(props.algo === "heap"){
-            heapSort(props);
+        if(!props.sorting){
+            if(props.algo === "bubble"){
+                bubbleSort(props);
+            }
+            else if(props.algo === "insertion"){
+                insertionSort(props);
+            }
+            else if(props.algo === "merge"){
+                mergeSort(props);
+            }
+            else if(props.algo === "quick"){
+                quickSort(props);
+            }
+            else if(props.algo === "selection"){
+                selectionSort(props);
+            }
+            else if(props.algo === "heap"){
+                heapSort(props);
+            }
         }
     }
 
@@ -62,7 +64,7 @@ const Area = (props)=>{
     <div className="areabody">
         <div className="area">
             <div className="startButtonDiv">
-                <a className="startButton" onClick={sort}>START</a>
+                <a className={`${props.sorting?'disabledStartButton':'startButton'}`} onClick={(sort)}>START</a>
             </div>
             <ul className="bars">
                 {generateArea()}

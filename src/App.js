@@ -18,6 +18,7 @@ function App() {
             <Navbar
             algo={algo}
             sample={sample}
+            sorting={sorting}
             barsHeight={barsHeight}
             barsGeneratedHeight={barsGeneratedHeight}
             setAlgo={setAlgo}
@@ -34,6 +35,7 @@ function App() {
             algo={algo}
             sampleSize={sampleSize}
             sample={sample}
+            sorting={sorting}
             barsHeight={barsHeight}
             barsWidth={barsWidth}
             barsGeneratedHeight={barsGeneratedHeight}

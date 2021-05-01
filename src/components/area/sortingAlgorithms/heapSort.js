@@ -70,15 +70,17 @@ export const heapSort = (props)=>{
     }
 
     async function main(){
+        props.setSorting(true);
         var set = [...props.sample];
         await sort(set, props.sampleSize);
         props.setSample([...set]);
         document.querySelectorAll('.bar').forEach(element=>{
             document.getElementById(element.id).classList.add('sortedBar');
         });
+        props.setSorting(false);
+        props.setSorted(true);
     }
-    props.setSorting(true);
+    
     main();
-    props.setSorting(false);
-    props.setSorted(true);
+
 }

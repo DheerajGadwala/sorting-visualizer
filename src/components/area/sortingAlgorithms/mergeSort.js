@@ -82,15 +82,17 @@ export const mergeSort = (props)=>{
     }
 
     async function main(){
+        props.setSorting(true);
         var set = [...props.sample];
         await divide(set, 0, props.sampleSize-1);
         props.setSample(set);
         document.querySelectorAll('.bar').forEach(element=>{
             document.getElementById(element.id).classList.add('sortedBar');
         });
+        props.setSorting(false);
+        props.setSorted(true);
     }
-    props.setSorting(true);
+
     main();
-    props.setSorting(false);
-    props.setSorted(true);
+
 }
