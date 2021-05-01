@@ -56,6 +56,7 @@ const Navbar = (props) => {
                                 <option value="insertion">Insertion Sort</option>
                                 <option value="selection">Selection Sort</option>
                                 <option value="merge">Merge Sort</option>
+                                <option value="heap">Heap Sort</option>
                                 <option value="quick">Quick Sort</option>
                             </select>
                         </div>

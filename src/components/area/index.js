@@ -5,6 +5,7 @@ import {insertionSort} from './sortingAlgorithms/insertionSort.js';
 import {mergeSort} from './sortingAlgorithms/mergeSort.js';
 import {quickSort} from './sortingAlgorithms/quickSort.js';
 import {selectionSort} from './sortingAlgorithms/selectionSort.js';
+import {heapSort} from './sortingAlgorithms/heapSort.js';
 
 const Area = (props)=>{
 
@@ -51,6 +52,9 @@ const Area = (props)=>{
         }
         else if(props.algo === "selection"){
             selectionSort(props);
+        }
+        else if(props.algo === "heap"){
+            heapSort(props);
         }
     }
 
