@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import Navbar from './components/navbar';
 import Area from './components/area';
 

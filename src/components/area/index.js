@@ -9,14 +9,6 @@ import {heapSort} from './sortingAlgorithms/heapSort.js';
 
 const Area = (props)=>{
 
-    useEffect(()=>{
-        props.setBarsHeight(document.querySelector('.bars').offsetHeight-4);
-    });
-
-    window.addEventListener('resize', ()=>{
-        props.setBarsHeight(document.querySelector('.bars').offsetHeight-4);
-    });
-
     const generateArea = ()=>{
         const ret = [];
         var i;
@@ -26,7 +18,7 @@ const Area = (props)=>{
                         id={i} 
                         length-value={props.sample[i]} 
                         style=
-                        {{  height: (props.sample[i]/props.barsGeneratedHeight*props.barsHeight), // rendering height as screen sizes changes || useful when view switches from portrait to landscape in mobile devices
+                        {{  height: (props.sample[i]/props.barsGeneratedHeight*100)+"%", // rendering height as screen sizes changes || useful when view switches from portrait to landscape in mobile devices
                             width: 70/(2*props.sampleSize)+'vw',          // 70 is the width in bars class in viewports
                             marginLeft: 70/(4*props.sampleSize)+'vw', 
                             marginRight: 70/(4*props.sampleSize)+'vw'

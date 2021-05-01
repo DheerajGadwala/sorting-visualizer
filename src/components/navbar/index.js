@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import './style.css'
 
 const Navbar = (props) => {
-
     useEffect(()=>{
         props.setBarsHeight(document.querySelector('.bars').offsetHeight-4);
     });
@@ -14,6 +13,7 @@ const Navbar = (props) => {
     const randomize = () =>{
         if(!props.sorting){
             props.setSorted(false);
+            props.setBarsHeight(document.querySelector('.bars').offsetHeight-4)
             props.setBarsGeneratedHeight(props.barsHeight);
             document.querySelectorAll('.bar').forEach(element=>{
                 element.classList.remove('sortedBar');
@@ -28,8 +28,13 @@ const Navbar = (props) => {
             props.setSample([...newSample]);
         }
     }
+    useLayoutEffect(()=>{
+        props.setBarsHeight(document.querySelector('.bars').offsetHeight-4);
+    }, []);
 
-    window.addEventListener('load', randomize); //randomize sampleSet on load
+    window.onload=()=>{
+        randomize();
+    }; //randomize sampleSet on load
 
     return (
         <>
@@ -42,14 +47,14 @@ const Navbar = (props) => {
                         <div className="slidercontainer block2a">
                             <div className="slider">
                                 <div>
-                                    Sample Size
+                                    Size and Speed
                                 </div>
                                 <div>
                                     <input className={`${props.sorting?'disabledSlider':''}`} disabled={`${props.sorting?'disabled':''}`} type="range" min="20" max="200" defaultValue="20" id = "samplesize" onChange={randomize}/>
                                 </div>
                             </div>
                             <div>
-                                <a className={`${props.sorting?'disabledRandomizeButton':'randomizeButton'}`} onClick={randomize}>RANDOMIZE</a>
+                                <a className={`${props.sorting?'disabledRandomizeButton':'randomizeButton'}`} onClick={randomize}>RANDOMIZE ARRAY</a>
                             </div>
                         </div>
                         <div className="dropdownContainer block2b">
