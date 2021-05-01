@@ -1,6 +1,6 @@
 export const bubbleSort = (props)=>{
 
-    var delay=1000/props.sampleSize;
+    var delay=200/props.sampleSize;
 
     const helper = (delay, j, type)=>{
         if(type==="visualize"){

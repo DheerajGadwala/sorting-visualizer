@@ -1,7 +1,7 @@
 .areabody{
     margin:0;
     padding:0;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
     display:flex;
     justify-content:center;
@@ -20,7 +20,7 @@
 }
 .bars li{
     display: table-cell;
-    width: 100px;
+    width: 200px;
     height: 50vh;
     position: relative;
     align-items:center;

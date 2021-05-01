@@ -4,16 +4,18 @@ import {bubbleSort} from './sortingAlgorithms/bubbleSort.js';
 import {insertionSort} from './sortingAlgorithms/insertionSort.js';
 import {mergeSort} from './sortingAlgorithms/mergeSort.js';
 import {quickSort} from './sortingAlgorithms/quickSort.js';
+import {selectionSort} from './sortingAlgorithms/selectionSort.js';
 
 const Area = (props)=>{
 
-    const [barsWidth, setBarsWidth] = React.useState(0);
-    const [barsHeight, setBarsHeight] = React.useState(0);
-
     useEffect(()=>{
-        setBarsWidth(document.querySelector('.bars').offsetWidth-4);
-        setBarsHeight(document.querySelector('.bars').offsetHeight-4);
+        props.setBarsHeight(document.querySelector('.bars').offsetHeight-4);
     });
+
+    window.addEventListener('resize', ()=>{
+        props.setBarsHeight(document.querySelector('.bars').offsetHeight-4);
+    });
+
     const generateArea = ()=>{
         const ret = [];
         var i;
@@ -23,7 +25,7 @@ const Area = (props)=>{
                         id={i} 
                         length-value={props.sample[i]} 
                         style=
-                        {{  height: (props.sample[i]/barsHeight*50)+'vh', // 50 is the height in bars class in viewports
+                        {{  height: (props.sample[i]/props.barsGeneratedHeight*props.barsHeight), // rendering height as screen sizes changes || useful when view switches from portrait to landscape in mobile devices
                             width: 70/(2*props.sampleSize)+'vw',          // 70 is the width in bars class in viewports
                             marginLeft: 70/(4*props.sampleSize)+'vw', 
                             marginRight: 70/(4*props.sampleSize)+'vw'
@@ -46,6 +48,9 @@ const Area = (props)=>{
         }
         else if(props.algo === "quick"){
             quickSort(props);
+        }
+        else if(props.algo === "selection"){
+            selectionSort(props);
         }
     }
 

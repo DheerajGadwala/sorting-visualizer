@@ -1,6 +1,6 @@
 export const insertionSort = (props)=>{
 
-    var delay=1000/props.sampleSize;
+    var delay=200/props.sampleSize;
 
     const helper = (set, i, j, delay, pos, newElement, type)=>{
         if(type==="push"){

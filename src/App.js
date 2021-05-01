@@ -5,20 +5,28 @@ import Area from './components/area';
 function App() {
     const [algo, setAlgo] = React.useState('bubble');
     const [sampleSize, setSampleSize] = React.useState(20);
-    const [sample, setSample] = React.useState([0]);
+    const [sample, setSample] = React.useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     const [sorting, setSorting] = React.useState(false);
     const [sorted, setSorted] = React.useState(false);
+    const [barsHeight, setBarsHeight] = React.useState(1);
+    const [barsWidth, setBarsWidth] = React.useState(1);
+    const [barsGeneratedHeight, setBarsGeneratedHeight] = React.useState(1);
     
     return (
     <>
         <div>
             <Navbar
             algo={algo}
+            sample={sample}
+            barsHeight={barsHeight}
+            barsGeneratedHeight={barsGeneratedHeight}
             setAlgo={setAlgo}
             setSampleSize={setSampleSize}
-            sample={sample}
             setSample={setSample}
             setSorted={setSorted}
+            setBarsHeight={setBarsHeight}
+            setBarsGeneratedHeight={setBarsGeneratedHeight}
+            
             />
         </div>
         <div>
@@ -26,9 +34,15 @@ function App() {
             algo={algo}
             sampleSize={sampleSize}
             sample={sample}
+            barsHeight={barsHeight}
+            barsWidth={barsWidth}
+            barsGeneratedHeight={barsGeneratedHeight}
             setSample={setSample}
             setSorting={setSorting}
             setSorted={setSorted}
+            setBarsHeight={setBarsHeight}
+            setBarsWidth={setBarsWidth}
+            setBarsGeneratedHeight={setBarsGeneratedHeight}
             />
         </div>
     </>
